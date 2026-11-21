@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+
+    <AssemblyName>WinFreshUtil</AssemblyName>
+    <RootNamespace>WinFreshUtil</RootNamespace>
+
+    <Product>WinFreshUtil</Product>
+    <AssemblyTitle>WinFreshUtil</AssemblyTitle>
+    <Description>A tiny post-install utility for fresh Windows 10 and 11 machines.</Description>
+    <Company>Nemo07</Company>
+    <Copyright>Copyright (c) 2026 Nemo07</Copyright>
+
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+
+    <ApplicationIcon>Resources\App.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <Platforms>AnyCPU</Platforms>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Framework assemblies from the .NET Framework reference assemblies, not NuGet packages. -->
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The ico is only needed for the icon of the executable, the png is used in the
+         window and on the about page. -->
+    <Resource Include="Resources\AppIcon.png" />
+
+    <!-- The list of programs of the WinUtil project. -->
+    <EmbeddedResource Include="Resources\winutil-apps.json" />
+
+    <!-- The local WinUtil definitions. Every file is read from the assembly, so the
+         WinUtil section needs no connection and no files next to the program. -->
+    <EmbeddedResource Include="Resources\winutil_data\tweaks.json">
+      <LogicalName>WinFreshUtil.Resources.winutil_data.tweaks.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\winutil_data\features.json">
+      <LogicalName>WinFreshUtil.Resources.winutil_data.features.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\winutil_data\appx.json">
+      <LogicalName>WinFreshUtil.Resources.winutil_data.appx.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\winutil_data\dns.json">
+      <LogicalName>WinFreshUtil.Resources.winutil_data.dns.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\winutil_data\presets.json">
+      <LogicalName>WinFreshUtil.Resources.winutil_data.presets.json</LogicalName>
+    </EmbeddedResource>
+
+    <!-- The activation scripts and the sources of RapidOS, carried inside the
+         application so that it works on a computer without the internet. The
+         logical names are what PayloadService looks for. -->
+    <EmbeddedResource Include="Resources\Payloads\MAS_AIO.cmd">
+      <LogicalName>WinFreshUtil.Payloads.MAS_AIO.cmd</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Payloads\Check_Activation_Status.cmd">
+      <LogicalName>WinFreshUtil.Payloads.Check_Activation_Status.cmd</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Payloads\Change_Windows_Edition.cmd">
+      <LogicalName>WinFreshUtil.Payloads.Change_Windows_Edition.cmd</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Payloads\Change_Office_Edition.cmd">
+      <LogicalName>WinFreshUtil.Payloads.Change_Office_Edition.cmd</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Payloads\RapidOS-9c8ce87e1c9bc2b095a1dbff3e073bdf47dd47e5.zip">
+      <LogicalName>WinFreshUtil.Payloads.RapidOS-9c8ce87e1c9bc2b095a1dbff3e073bdf47dd47e5.zip</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+.vs/
+
+# User and IDE files
+*.user
+*.suo
+*.userprefs
+.idea/
+
+# Release archives are published as assets, not committed
+*.rar
+
+# Logs
+*.log

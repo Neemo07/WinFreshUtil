@@ -1,0 +1,132 @@
+<Window x:Class="WinFreshUtil.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinFreshUtil"
+        Icon="pack://application:,,,/WinFreshUtil;component/Resources/AppIcon.png"
+        Height="760" Width="1240" MinHeight="600" MinWidth="980"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource AppBackgroundBrush}"
+        FontFamily="{DynamicResource AppFontFamily}"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="238" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0"
+                Background="{DynamicResource SidebarBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,0,1,0">
+            <DockPanel Margin="14,20,14,14">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="6,0,0,22">
+                    <Image Source="pack://application:,,,/WinFreshUtil;component/Resources/AppIcon.png"
+                           Width="34"
+                           Height="34"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           VerticalAlignment="Center" />
+                    <StackPanel Margin="11,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Text="WinFreshUtil"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource TextPrimaryBrush}" />
+                        <TextBlock Text="Post-install utility"
+                                   FontSize="11"
+                                   Foreground="{DynamicResource TextMutedBrush}"
+                                   Margin="0,2,0,0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Bottom">
+                    <Border Background="{DynamicResource SurfaceBrush}"
+                            BorderBrush="{DynamicResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="10,8"
+                            Margin="0,0,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock x:Name="ThemeName"
+                                           Text="Dark theme"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource TextSecondaryBrush}" />
+                                <TextBlock x:Name="VersionText"
+                                           FontSize="10"
+                                           Foreground="{DynamicResource TextMutedBrush}"
+                                           Margin="0,2,0,0" />
+                            </StackPanel>
+                            <Button x:Name="ThemeButton"
+                                    Grid.Column="1"
+                                    Style="{StaticResource IconButton}"
+                                    Click="ThemeButton_Click"
+                                    ToolTip="Switch between the dark and the light theme" />
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="All work stays on this computer."
+                               FontSize="10"
+                               Foreground="{DynamicResource TextMutedBrush}"
+                               TextWrapping="Wrap"
+                               Margin="6,0,0,0" />
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="WORK"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource TextMutedBrush}"
+                               Margin="12,0,0,7" />
+
+                    <RadioButton x:Name="NavDrivers"
+                                 Style="{StaticResource NavItem}"
+                                 Tag="&#xE772;"
+                                 Content="Drivers"
+                                 GroupName="Navigation"
+                                 Checked="Nav_Checked" />
+                    <RadioButton x:Name="NavWinUtil"
+                                 Style="{StaticResource NavItem}"
+                                 Tag="&#xE713;"
+                                 Content="WinUtil"
+                                 GroupName="Navigation"
+                                 Checked="Nav_Checked" />
+                    <RadioButton x:Name="NavApps"
+                                 Style="{StaticResource NavItem}"
+                                 Tag="&#xE71D;"
+                                 Content="Install apps"
+                                 GroupName="Navigation"
+                                 Checked="Nav_Checked" />
+                    <RadioButton x:Name="NavWindowsOffice"
+                                 Style="{StaticResource NavItem}"
+                                 Tag="&#xE72E;"
+                                 Content="Windows &amp; Office"
+                                 GroupName="Navigation"
+                                 Checked="Nav_Checked" />
+
+                    <TextBlock Text="PROGRAM"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource TextMutedBrush}"
+                               Margin="12,18,0,7" />
+
+                    <RadioButton x:Name="NavAbout"
+                                 Style="{StaticResource NavItem}"
+                                 Tag="&#xE946;"
+                                 Content="About"
+                                 GroupName="Navigation"
+                                 Checked="Nav_Checked" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Only the selected page is created, and then only once. -->
+        <ContentControl x:Name="ContentHost" Grid.Column="1" />
+    </Grid>
+</Window>
